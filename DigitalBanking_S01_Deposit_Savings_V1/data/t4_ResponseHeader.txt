@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+Access-Control-Allow-Headers: AppId, MetricsTicket, ConfID, SiteID, TimeStamp, APPName, Ver, Authorization, email
+Access-Control-Allow-Methods: OPTIONS, POST, PUT
+Access-Control-Allow-Origin: *
+Content-Type: text/plain; charset = UTF-8
+Strict-Transport-Security: max-age = 31536000; includeSubDomains;
+X-Content-Type-Options: nosniff
+Date: Mon, 30 Nov 2020 07:22:39 GMT
+Content-Length: 7
+

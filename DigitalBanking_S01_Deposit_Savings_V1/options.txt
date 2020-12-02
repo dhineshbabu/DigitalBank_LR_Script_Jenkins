@@ -1,0 +1,9 @@
+-+
+-DCCI
+-D_IDA_XL
+-DWINNT
+-IC:\Users\lenovo\Documents\VuGen\Scripts\DigitalBanking\DigitalBanking_S01_Deposit_Savings_Dev3
+-IC:\Program Files (x86)\Micro Focus\LoadRunner\include
+-ec:\users\lenovo\documents\vugen\scripts\digitalbanking\digitalbanking_s01_deposit_savings_dev3\\logfile.log
+c:\users\lenovo\documents\vugen\scripts\digitalbanking\digitalbanking_s01_deposit_savings_dev3\\combined_DigitalBanking_S01_Deposit_Savings_Dev3.c
+c:\users\lenovo\documents\vugen\scripts\digitalbanking\digitalbanking_s01_deposit_savings_dev3\\pre_cci.c

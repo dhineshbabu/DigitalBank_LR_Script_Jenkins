@@ -1,0 +1,11 @@
+[t7]
+FileName1=t7.json
+URL1=https://update.googleapis.com/service/update2/json?cup2key=10:352593890&cup2hreq=ccf10945e129e44af5df22fc050c6564d1bdc695b8e33da10ab5146d3925e046
+Total=1
+RequestHeaderFile=t7_RequestHeader.txt
+RequestBodyFile=t7_RequestBody.txt
+ResponseHeaderFile=t7_ResponseHeader.txt
+ContentType=application/json
+SnapshotXmlFile=snapshot_7.xml
+[ProtocolInfo]
+ProtocolId=QTWeb

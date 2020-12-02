@@ -1,0 +1,338 @@
+2000
+<!DOCTYPE html>
+
+<html class="no-js" lang="en" xmlns="http://www.w3.org/1999/xhtml"> 
+
+<head>
+ 
+   	<title>Digital Bank</title>
+   
+   
+   	<meta charset="utf-8"/>
+   	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+   	<meta name="description" content="Digital Bank"/>
+   	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+   
+   	<link rel="apple-touch-icon" href="/bank/images/apple-icon.png"/>
+   	<link rel="stylesheet" href="/bank/css/normalize.css"/>
+   	<link rel="stylesheet" href="/bank/css/bootstrap.min.css"/>
+   	<link rel="stylesheet" href="/bank/css/font-awesome.min.css"/>
+   	<link rel="stylesheet" href="/bank/css/themify-icons.css"/>
+   	<link rel="stylesheet" href="/bank/css/flag-icon.min.css"/>
+   	<link rel="stylesheet" href="/bank/css/cs-skin-elastic.css"/>
+   	<link rel="stylesheet" href="/bank/scss/style.css"/>
+   	<link rel="stylesheet" href="/bank/css/google-fonts-opensans.css" type="text/css"/>
+   	<link rel="stylesheet" href="/bank/css/jquery-ui.css"/>
+   	<link rel="icon" href="/bank/favicon.ico">
+   	<link rel="shortcut icon" href="/bank/favicon.ico">
+
+</head>
+
+<body>
+
+
+	<!-- Left Panel -->
+	<aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="/bank/"><img src="/bank/images/logo.png" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="/bank/"><img src="/bank/images/logo2.png" alt="Logo"></a>
+            </div>
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    
+                    <li><a id="home-menu-item" href="/bank/home"><i class="menu-icon fa fa-home"></i>Home</a></li>
+                    
+                    <h3 class="menu-title">Banking Accounts</h3><!-- /.menu-title -->
+                    
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" id="checking-menu" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-pencil-square-o"></i>Checking</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-tasks"></i><a id="view-checking-menu-item" href="/bank/account/checking-view">View Checking</a></li>
+                            <li><i class="fa fa-plus-square"></i><a id="new-checking-menu-item" href="/bank/account/checking-add">New Checking</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" id="savings-menu" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-money"></i>Savings</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-tasks"></i><a id="view-savings-menu-item" href="/bank/account/savings-view">View Savings</a></li>
+                            <li><i class="fa fa-plus-square"></i><a id="new-savings-menu-item" href="/bank/account/savings-add">New Savings</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="menu-item-has-children dropdown"> <!--  th:if="${obpEnabled}" -->
+                        <a href="#" id="external-accounts-menu" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-external-link"></i>External</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-plus-square"></i><a id="link-external-menu-item" href="/bank/obp/obp-add">Link External Account</a></li>
+                            <li><i class="menu-icon fa fa-exchange"></i><a id="view-external-menu-item" href="/bank/obp/obp-view">View External Accounts</a></li>
+                        </ul>
+                    </li>
+                    
+                    <h3 class="menu-title">Transactions / Transfers</h3><!-- /.menu-title -->
+
+                    <li><a id="deposit-menu-item" href="/bank/account/deposit"><i class="menu-icon fa fa-sign-in"></i>Deposit</a></li>
+                    <li><a id="withdraw-menu-item" href="/bank/account/withdraw"><i class="menu-icon fa fa-sign-out"></i>Withdraw</a></li>
+                    <li><a id="transfer-menu-item" href="/bank/account/xfer-between"><i class="menu-icon fa fa-random"></i>Transfer Between Accounts</a></li>
+                    <li><a id="visa-transfer-menu-item" href="/bank/external/xfer-visa"><i class="menu-icon fa fa-credit-card"></i>VISA Direct Transfer</a></li>
+                    
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside>
+
+    <!-- Right Panel -->
+	<div id="right-panel" class="right-panel">
+	
+		<header id="header" class="header">
+
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    <div class="header-left">
+                        <button id="searchLocations" class="search-trigger"><i class="fa fa-search"></i></button>
+                       		<div class="form-inline">
+                            	<form class="search-form" action="/bank/search/atm" method="post">
+                             		<div class="form-group">
+	                            		<label for="zipcode" class="pr-1 form-control-label text-light">Find ATM Locations</label> 
+	                                	<input id="zipcode" name="zipcode" class="form-control mr-sm-2" type="text" placeholder="Enter Zip Code" aria-label="Search" required pattern="^[0-9]{5}(?:-[0-9]{4})?$">
+	                                	<button id="submit" type="submit"></button>
+	                                	<button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                            		</div>
+                            	</form>
+                        	</div>
+						
+                        <div class="dropdown for-notification">
+                          <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-bell"></i>
+                            
+                            <span class="count bg-danger">0</span>
+                            <!--<span class="count bg-danger" th:text="${notificationCount}">[Num Notifications]</span>-->
+                            <!--<span class="count bg-danger">1</span>-->
+                            
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="notification">
+                            
+                            <p style="width: max-content">You have <span>0</span> Notification[s]</p>
+                            
+                            
+                            <!-- <a class="dropdown-item media" href="#">
+                                <i class="fa fa-warning"></i>
+                                <p>Schedule Maintenance this weekend.</p>
+                            </a> -->
+                            
+                          </div>
+                        </div>
+
+                        <div class="dropdown for-message">
+                          <button class="btn btn-secondary dropdown-toggle" type="button"
+                                id="message"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="ti-email"
+2000
+></i>
+                            <span class="count bg-primary">0</span>
+                          </button>
+                       
+
+                          <div class="dropdown-menu" aria-labelledby="message">
+                            <p style="width: max-content">You have 0 Unread Mail[s]</p>
+                            <!-- <a class="dropdown-item media" href="#">
+                                <i class="fa fa-warning"></i>
+                            </a> -->
+                          </div>
+                          
+                          
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-5">
+                    <div class="user-area dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="/bank/images/admin.jpg" alt="User Avatar"></img>
+                        </a>
+                        <div class="user-menu dropdown-menu">
+                                <a class="nav-link" href="/bank/user/profile"><i class="fa fa- user"></i>My Profile</a>
+                                <a class="nav-link" href="/bank/user/password"><i class="fa fa- user"></i>Change Password</a>
+                                <a class="nav-link" href="/bank/logout"><i class="fa fa-power -off"></i>Logout</a> 
+                        </div>
+                    </div>
+                    <div class="language-select dropdown" id="language-select">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
+                            <i class="flag-icon flag-icon-us"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="user-area dropdown">
+                    	<a class="user-avatar rounded-circle" data-toggle="modal" href="#aboutModal" id="aboutLink">
+                    	<i class="ti-help-alt text-primary border-primary"></i>
+                    	</a>
+					</div>
+                </div>
+                
+                 <!--  About Modal Begin -->
+		        <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">
+		       		<div class="modal-dialog modal-sm" role="document">
+		           		<div class="modal-content">
+		               		<div class="modal-header">
+		               			<a href="#"><img class="align-self-center rounded-circle mr-3" style="width:40px; height:40px;" alt="" src="/bank/favicon.ico"></a>
+		                   		<h3 class="modal-title" id="aboutModalTitle">Digital Bank</h3>
+		                   		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                	<span aria-hidden="true">×</span>
+                                </button>
+		                   	</div>
+		                	<div class="modal-body">
+		                		<p>Version: 2.1.0.121<br />Date: Nov 30, 2020</p>
+		                	</div>
+		           		</div>
+		        	</div>
+		    	</div>
+		    	
+		    	<!--  About Modal End -->
+            </div>
+
+        </header>
+		
+		<div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1 id="page-title">Deposit</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li class="active">Welcome Josh</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    	<!-- Page Content Begin -->
+    
+	    	<div class="content mt-3">
+	            <div class="animated fadeIn">
+	                
+	                <div class="row">				
+		    			<div class="col-lg-12">
+	                    	<div class="card">
+                      			<div class="card-header bg-flat-color-1">
+                        			<strong class="card-title text-white">Deposit into Account</strong>
+                      			</div>
+	                      		<form action="/bank/account/deposit" method="post">
+		                     		<div class="card-body card-block">
+	                   					<div class="form-group text-left">
+	                   						
+	                   					</div>
+	                   					
+		                      			<div class="row form-group">
+		    								<div class="col col-sm-5">
+					                            <label class=" form-control-label"><strong>Account for Deposit</strong></label>
+					                            <div class="form-inline">
+					                            	<select class="form-control" id="selectedAccount" name="id" required onchange="showSelectedBalance()">
+					                            		<option class="text-light"value="">---------- Select Account -----------</option>
+					                              		<option value="95">Family Checking (Standard Checking)</option>
+					                              		<option value="79">Personal Savings (Money Market)</option>
+					                              		<option value="88">Family Savings (Savings)</option>
+					            					</select>
+					            					<small id="selectedAccountBalance" class="text-muted ml-2"></small>
+					            				</div>
+					                        </div>
+					                   	</div>
+		                        		<div class="row form-group">
+		                        			<div class="col col-sm-3">
+					                            <label class="form-control-label"><strong>Deposit Amount</strong></label>
+					                            <input type="text" class="form-control" required pattern="^(?=.+)(?:[1-9]\d*|0)?(?:\.\d+)?$" id="amount" name="amount" value="">
+					                        	<small class="form-text text-muted">ex. 25.00</small>
+					                        </div>
+		                        		</div>		
+                      				</div> <!-- End Card Body -->
+		                   			<div class="card-footer">
+		                     			<button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-dot-circle-o"></i> Submit</button>
+		                     			<button type="reset" class="btn btn-danger btn-sm"><i class="fa fa-ban"></i> Reset</button>
+		                  			</div> <!-- End Card Footer -->	
+                     			</form>
+                    		</div> <!-- End Card -->
+                 		</div> <!-- End Column-->
+                	</div> <!-- End Row -->
+                	
+	            </div><!-- .animated -->
+	        </div><!-- .content -->
+	        
+	    <!-- Page Content End -->
+	    
+	</div> <!-- End right panel -->
+    
+	<!-- Footer -->
+	<div>
+    <script src="/bank/js/vendor/jquery-2.1.4.min.js"></script>
+    <script src="/bank/js/vendor/jquery-1.12.4.js"></script>
+    <script src="/bank/js/vendor/jquery-ui.js"></script>
+    <script src="/bank/js/popper.min.js"></script>
+    <script src="/bank/js/plugins.js"></script>
+    <script src="/bank/js/main.js"></script>
+    <script src="/bank/js/dashboard.js"></script>
+    <script src="/bank/js/widgets.js"></script>
+    <script src="/bank/js/lib/chart-js/Chart.bundle.js"></script>
+    <script src="/bank/js/lib/vector-map/jquery.vmap.js"></script>
+    <script src="/bank/js/lib/vector-map/jquery.vmap.min.js"></script>
+    <script src="/bank/js/lib/vector-map/jquery.vmap.sampledata.js"></script>
+    <script src="/bank/js/lib/vector-map/country/jquery.vmap.world.js"></script>
+
+    <script>
+        ( function ( $ ) {
+            "use strict";
+
+            jQuery( '#vmap' ).vectorMap( {
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#ffffff',
+          
+7ef
+      hoverOpacity: 0.7,
+                selectedColor: '#1de9b6',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: [ '#1de9b6', '#03a9f5' ],
+                normalizeFunction: 'polynomial'
+            } );
+        } )( jQuery );
+    </script>
+
+</div>
+	
+	<!-- Displays the current balance of the selected account -->
+	<script>
+        /*<![CDATA[*/
+        function showSelectedBalance() {
+            var accounts = [{"id":95,"name":"Family Checking","accountNumber":486130003,"currentBalance":1180.40,"openingBalance":2617.00,"interestRate":0.0,"paymentAmount":0.0,"paymentTerm":0,"accountType":{"id":8,"code":"SCK","category":"CHK","name":"Standard Checking","interestRate":0.0,"minDeposit":25.00,"overdraftLimit":25.00,"overdraftFee":10.00},"ownershipType":{"id":18,"code":"JNT","name":"Joint"},"accountStanding":{"id":19,"code":"A1","name":"Open"},"dateOpened":"2020-10-01T01:30","dateClosed":null,"paymentDue":null},{"id":79,"name":"Personal Savings","accountNumber":486130001,"currentBalance":1624.20,"openingBalance":1251.00,"interestRate":2.02,"paymentAmount":0.0,"paymentTerm":0,"accountType":{"id":11,"code":"MMA","category":"SAV","name":"Money Market","interestRate":2.02,"minDeposit":2500.00,"overdraftLimit":25.00,"overdraftFee":10.00},"ownershipType":{"id":17,"code":"IND","name":"Individual"},"accountStanding":{"id":19,"code":"A1","name":"Open"},"dateOpened":"2020-05-30T05:34","dateClosed":null,"paymentDue":null},{"id":88,"name":"Family Savings","accountNumber":486130002,"currentBalance":3803.42,"openingBalance":2024.00,"interestRate":1.85,"paymentAmount":0.0,"paymentTerm":0,"accountType":{"id":10,"code":"SAV","category":"SAV","name":"Savings","interestRate":1.85,"minDeposit":25.00,"overdraftLimit":25.00,"overdraftFee":10.00},"ownershipType":{"id":18,"code":"JNT","name":"Joint"},"accountStanding":{"id":19,"code":"A1","name":"Open"},"dateOpened":"2020-09-30T08:38","dateClosed":null,"paymentDue":null}]
+1e7
+;
+            var selectedIndex = $("#selectedAccount option:selected").index();
+            var selectedAccount = accounts[selectedIndex-1];
+            if (selectedAccount) {
+            	$("#selectedAccountBalance").text("Balance: $"+selectedAccount.currentBalance.toFixed(2));
+            } else {
+            	$("#selectedAccountBalance").text("");
+            }
+        }
+        $(function() { showSelectedBalance(); });
+        /*]]>*/
+	</script>
+
+</body>
+</html>
+
+0
+

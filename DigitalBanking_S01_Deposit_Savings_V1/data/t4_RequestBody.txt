@@ -1,0 +1,4 @@
+"{\"telemetrics\":[{\"t\":\"PageView\",\"ts\":\"2020-11-30T12:52:17.158+0550\",\"tid\":\"f69f40"
+"b7-d267-54da-8b92-65f2bf868fc8\",\"cid\":\"96c418d6-fdef-268b-b480-06988772e004\",\"pd\":\"unk"
+"nown\",\"ver\":\"2.0\",\"v\":{\"title\":\"\",\"location\":\"chrome-extension://jlhmfgmfgeifome"
+"nelglieieghnjghma/_generated_background_page.html\"}}]}"

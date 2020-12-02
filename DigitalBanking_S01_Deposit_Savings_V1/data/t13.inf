@@ -1,0 +1,15 @@
+[t13]
+FileName1=t13.txt
+URL1=https://clientservices.googleapis.com/uma/v2
+Total=3
+RequestHeaderFile=t13_RequestHeader.txt
+RequestBodyFile=t13_RequestBody.txt
+ResponseHeaderFile=t13_ResponseHeader.txt
+ContentType=text/plain
+SnapshotXmlFile=snapshot_13.xml
+FileName2=t13_favicon.ico
+URL2=http://localhost:8080/bank/favicon.ico
+FileName3=t13_favicon.ico
+URL3=http://localhost:8080/bank/favicon.ico
+[ProtocolInfo]
+ProtocolId=QTWeb

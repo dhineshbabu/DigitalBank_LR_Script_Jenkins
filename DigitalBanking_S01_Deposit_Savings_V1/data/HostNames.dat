@@ -1,0 +1,13 @@
+[hosts]
+localhost=
+accounts.google.com=
+clientservices.googleapis.com=
+dns.google=
+sec-tws-prod-vip.webex.com=
+ssl.gstatic.com=
+cdn.mxpnl.com=
+sstats.adobe.com=
+darkreader.github.io=
+api.mixpanel.com=
+content-autofill.googleapis.com=
+update.googleapis.com=

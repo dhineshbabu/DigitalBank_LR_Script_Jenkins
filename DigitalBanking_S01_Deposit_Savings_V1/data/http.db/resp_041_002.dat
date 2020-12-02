@@ -1,0 +1,559 @@
+2000
+<!DOCTYPE html>
+
+<html class="no-js" lang="en" xmlns="http://www.w3.org/1999/xhtml"> 
+
+<head>
+ 
+   	<title>Digital Bank</title>
+   
+   
+   	<meta charset="utf-8"/>
+   	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+   	<meta name="description" content="Digital Bank"/>
+   	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+   
+   	<link rel="apple-touch-icon" href="/bank/images/apple-icon.png"/>
+   	<link rel="stylesheet" href="/bank/css/normalize.css"/>
+   	<link rel="stylesheet" href="/bank/css/bootstrap.min.css"/>
+   	<link rel="stylesheet" href="/bank/css/font-awesome.min.css"/>
+   	<link rel="stylesheet" href="/bank/css/themify-icons.css"/>
+   	<link rel="stylesheet" href="/bank/css/flag-icon.min.css"/>
+   	<link rel="stylesheet" href="/bank/css/cs-skin-elastic.css"/>
+   	<link rel="stylesheet" href="/bank/scss/style.css"/>
+   	<link rel="stylesheet" href="/bank/css/google-fonts-opensans.css" type="text/css"/>
+   	<link rel="stylesheet" href="/bank/css/jquery-ui.css"/>
+   	<link rel="icon" href="/bank/favicon.ico">
+   	<link rel="shortcut icon" href="/bank/favicon.ico">
+
+</head>
+
+	 			
+<body>
+
+
+	<!-- Left Panel -->
+	<aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="/bank/"><img src="/bank/images/logo.png" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="/bank/"><img src="/bank/images/logo2.png" alt="Logo"></a>
+            </div>
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    
+                    <li><a id="home-menu-item" href="/bank/home"><i class="menu-icon fa fa-home"></i>Home</a></li>
+                    
+                    <h3 class="menu-title">Banking Accounts</h3><!-- /.menu-title -->
+                    
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" id="checking-menu" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-pencil-square-o"></i>Checking</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-tasks"></i><a id="view-checking-menu-item" href="/bank/account/checking-view">View Checking</a></li>
+                            <li><i class="fa fa-plus-square"></i><a id="new-checking-menu-item" href="/bank/account/checking-add">New Checking</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" id="savings-menu" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-money"></i>Savings</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-tasks"></i><a id="view-savings-menu-item" href="/bank/account/savings-view">View Savings</a></li>
+                            <li><i class="fa fa-plus-square"></i><a id="new-savings-menu-item" href="/bank/account/savings-add">New Savings</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="menu-item-has-children dropdown"> <!--  th:if="${obpEnabled}" -->
+                        <a href="#" id="external-accounts-menu" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-external-link"></i>External</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-plus-square"></i><a id="link-external-menu-item" href="/bank/obp/obp-add">Link External Account</a></li>
+                            <li><i class="menu-icon fa fa-exchange"></i><a id="view-external-menu-item" href="/bank/obp/obp-view">View External Accounts</a></li>
+                        </ul>
+                    </li>
+                    
+                    <h3 class="menu-title">Transactions / Transfers</h3><!-- /.menu-title -->
+
+                    <li><a id="deposit-menu-item" href="/bank/account/deposit"><i class="menu-icon fa fa-sign-in"></i>Deposit</a></li>
+                    <li><a id="withdraw-menu-item" href="/bank/account/withdraw"><i class="menu-icon fa fa-sign-out"></i>Withdraw</a></li>
+                    <li><a id="transfer-menu-item" href="/bank/account/xfer-between"><i class="menu-icon fa fa-random"></i>Transfer Between Accounts</a></li>
+                    <li><a id="visa-transfer-menu-item" href="/bank/external/xfer-visa"><i class="menu-icon fa fa-credit-card"></i>VISA Direct Transfer</a></li>
+                    
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside>
+
+    <!-- Right Panel -->
+	<div id="right-panel" class="right-panel">
+	
+		<header id="header" class="header">
+
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    <div class="header-left">
+                        <button id="searchLocations" class="search-trigger"><i class="fa fa-search"></i></button>
+                       		<div class="form-inline">
+                            	<form class="search-form" action="/bank/search/atm" method="post">
+                             		<div class="form-group">
+	                            		<label for="zipcode" class="pr-1 form-control-label text-light">Find ATM Locations</label> 
+	                                	<input id="zipcode" name="zipcode" class="form-control mr-sm-2" type="text" placeholder="Enter Zip Code" aria-label="Search" required pattern="^[0-9]{5}(?:-[0-9]{4})?$">
+	                                	<button id="submit" type="submit"></button>
+	                                	<button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                            		</div>
+                            	</form>
+                        	</div>
+						
+                        <div class="dropdown for-notification">
+                          <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-bell"></i>
+                            
+                            <span class="count bg-danger">0</span>
+                            <!--<span class="count bg-danger" th:text="${notificationCount}">[Num Notifications]</span>-->
+                            <!--<span class="count bg-danger">1</span>-->
+                            
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="notification">
+                            
+                            <p style="width: max-content">You have <span>0</span> Notification[s]</p>
+                            
+                            
+                            <!-- <a class="dropdown-item media" href="#">
+                                <i class="fa fa-warning"></i>
+                                <p>Schedule Maintenance this weekend.</p>
+                            </a> -->
+                            
+                          </div>
+                        </div>
+
+                        <div class="dropdown for-message">
+                          <button class="btn btn-secondary dropdown-toggle" type="button"
+                                id="message"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="ti
+2000
+-email"></i>
+                            <span class="count bg-primary">0</span>
+                          </button>
+                       
+
+                          <div class="dropdown-menu" aria-labelledby="message">
+                            <p style="width: max-content">You have 0 Unread Mail[s]</p>
+                            <!-- <a class="dropdown-item media" href="#">
+                                <i class="fa fa-warning"></i>
+                            </a> -->
+                          </div>
+                          
+                          
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-5">
+                    <div class="user-area dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="/bank/images/admin.jpg" alt="User Avatar"></img>
+                        </a>
+                        <div class="user-menu dropdown-menu">
+                                <a class="nav-link" href="/bank/user/profile"><i class="fa fa- user"></i>My Profile</a>
+                                <a class="nav-link" href="/bank/user/password"><i class="fa fa- user"></i>Change Password</a>
+                                <a class="nav-link" href="/bank/logout"><i class="fa fa-power -off"></i>Logout</a> 
+                        </div>
+                    </div>
+                    <div class="language-select dropdown" id="language-select">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
+                            <i class="flag-icon flag-icon-us"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="user-area dropdown">
+                    	<a class="user-avatar rounded-circle" data-toggle="modal" href="#aboutModal" id="aboutLink">
+                    	<i class="ti-help-alt text-primary border-primary"></i>
+                    	</a>
+					</div>
+                </div>
+                
+                 <!--  About Modal Begin -->
+		        <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">
+		       		<div class="modal-dialog modal-sm" role="document">
+		           		<div class="modal-content">
+		               		<div class="modal-header">
+		               			<a href="#"><img class="align-self-center rounded-circle mr-3" style="width:40px; height:40px;" alt="" src="/bank/favicon.ico"></a>
+		                   		<h3 class="modal-title" id="aboutModalTitle">Digital Bank</h3>
+		                   		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                	<span aria-hidden="true">×</span>
+                                </button>
+		                   	</div>
+		                	<div class="modal-body">
+		                		<p>Version: 2.1.0.121<br />Date: Nov 30, 2020</p>
+		                	</div>
+		           		</div>
+		        	</div>
+		    	</div>
+		    	
+		    	<!--  About Modal End -->
+            </div>
+
+        </header>
+		
+		<div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1 id="page-title">View Savings Accounts</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li class="active">Welcome Josh</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    	<!-- Page Content Begin -->
+    	
+    	
+    
+	    	<div class="content mt-3">
+	            <div class="animated fadeIn">
+	            
+	            	
+	            
+	                <div id="firstRow" class="row">				
+		    			<div class="col-md-6 col-lg-3">
+	                        <div class="card bg-flat-color-5 text-light">
+	                        	
+	                        	<form action="/bank/account/savings-view" method="get" id="79">
+		                            <div class="card-body">
+		                            	
+		                            	<label class="switch switch-text switch-primary switch-pill float-right">
+		                                	<input type="checkbox" onclick="form.submit()" class="switch-input" name="selectSwitch" value="79" checked="checked">
+		                                		<span data-on="On" data-off="Off" class="switch-label"></span> 
+		                                		<span class="switch-handle"></span>
+		                                </label>
+		                     
+		                                <div class="h4 m-0" contenteditable=true>Personal Savings</div>
+		                                <div><small class="text-light">Account: Money Market</small></div>
+		                                <div><small class="text-light">Ownership: Individual</small></div>
+		                                <div><small class="text-light">Account Number: 486130001</small></div>
+		                                <div><small class="text-light">Interest Rate: 2.02%</small></div>
+		                                <div><br></div>
+		                                <div class="h4 m-0">Balance: $1674.20</div>
+		                            </div>
+	                            </form> <!-- End form -->
+	                        </div> <!-- End Card -->
+	                    </div>				
+		    			<div class="col-md-6 col-lg-3">
+	                        <div class="card bg-flat-color-5 text-light">
+	                        	
+	                        	<form action="/bank/account/savings-view" method="get" id="88">
+		                            <div class="card-body">
+		                            	
+		                            	<label class="switch switch-text switch-primary switch-pill float-right">
+		                                	<input type="checkbox" onclick="form.submit()" class="switch-input" name="selectSwitch" value="88">
+		                                		<span data-on="On" data-off="Off" class="switch-label"></span> 
+		                                		<span class="switch-handle"></span>
+		                                </label>
+		                     
+		                                <div class="h4 m-0" contenteditable=true>Family Savings</div>
+		                                <div><small class="text-light">Account: Savings</small></div>
+		                                <div><small class="text-light">Ownership: Joint</small></div>
+		                                <div><small class="text-light">Account Number: 486130002</small></div>
+		                                <div><small class="text-light">Interest Rate: 1.85%</small></div>
+		                                <div><br></div>
+		                                <div class="h4 m-0">Balance: $3803.42</div>
+		                            </div>
+	                            </form> <!-- End form -->
+	                        </div> <!-- End Card -->
+	                    </div><!-- End Column 6-->
+                	</div> <!-- End Row -->
+                
+                <div class="row">
+	                <div class="col-md-12">
+	                    <div class="card">
+	                        <div class="card-header bg-secondary">
+	                            <strong class="card-title text-light">Transactions</strong>
+	                        </div>
+	                        <div class="card-body">
+	                        	<table id="transactionTable" class="table table-striped table-bordered">
+				                    <thead>
+				                      <tr class="bg-secondary text-light">
+				               
+2000
+         <th data-field="date" data-sortable="true">Date</th>
+				                        <th data-field="category" data-sortable="true">Category</th>
+				                        <th data-field="description" data-sortable="true">Description</th>
+				                        <th data-field="amount" data-sortable="true">Amount</th>
+				                        <th data-field="balance" data-sortable="true">Balance</th>
+				                      </tr>
+				                    </thead>
+				                    <tbody>
+				                      <tr>
+				                        <td>2020-11-30 12:54</td>
+				                        <td>Income</td>
+				                        <td>845320047 (DPT) - Online Deposit</td>
+				                        <td>$50.00</td>
+				                        <td>$1674.20</td>
+				                      </tr>
+				                      <tr>
+				                        <td>2020-11-30 12:42</td>
+				                        <td>Income</td>
+				                        <td>845320046 (DPT) - Online Deposit</td>
+				                        <td>$50.00</td>
+				                        <td>$1624.20</td>
+				                      </tr>
+				                      <tr>
+				                        <td>2020-11-30 12:30</td>
+				                        <td>Income</td>
+				                        <td>845320045 (DPT) - Online Deposit</td>
+				                        <td>$50.00</td>
+				                        <td>$1574.20</td>
+				                      </tr>
+				                      <tr>
+				                        <td>2020-11-30 12:15</td>
+				                        <td>Income</td>
+				                        <td>845320044 (DPT) - Online Deposit</td>
+				                        <td>$100.00</td>
+				                        <td>$1524.20</td>
+				                      </tr>
+				                      <tr>
+				                        <td>2020-11-30 09:03</td>
+				                        <td>Income</td>
+				                        <td>845320008 (INT) - Interest Income</td>
+				                        <td>$2.87</td>
+				                        <td>$1424.20</td>
+				                      </tr>
+				                      <tr>
+				                        <td>2020-10-30 09:06</td>
+				                        <td>Income</td>
+				                        <td>845320007 (INT) - Interest Income</td>
+				                        <td>$2.87</td>
+				                        <td>$1421.33</td>
+				                      </tr>
+				                      <tr>
+				                        <td>2020-09-30 09:05</td>
+				                        <td>Income</td>
+				                        <td>845320006 (INT) - Interest Income</td>
+				                        <td>$2.86</td>
+				                        <td>$1418.46</td>
+				                      </tr>
+				                      <tr>
+				                        <td>2020-09-09 12:38</td>
+				                        <td>Income</td>
+				                        <td>845320005 (DPT) - PRO Dividend</td>
+				                        <td>$157.00</td>
+				                        <td>$1415.60</td>
+				                      </tr>
+				                      <tr>
+				                        <td>2020-08-30 09:07</td>
+				                        <td>Income</td>
+				                        <td>845320004 (INT) - Interest Income</td>
+				                        <td>$2.54</td>
+				                        <td>$1258.60</td>
+				                      </tr>
+				                      <tr>
+				                        <td>2020-07-30 09:04</td>
+				                        <td>Income</td>
+				                        <td>845320003 (INT) - Interest Income</td>
+				                        <td>$2.53</td>
+				                        <td>$1256.06</td>
+				                      </tr>
+				                      <tr>
+				                        <td>2020-06-30 09:06</td>
+				                        <td>Income</td>
+				                        <td>845320002 (INT) - Interest Income</td>
+				                        <td>$2.53</td>
+				                        <td>$1253.53</td>
+				                      </tr>
+				                      <tr>
+				                        <td>2020-05-30 11:04</td>
+				                        <td>Income</td>
+				                        <td>845320001 (DPT) - Deposit</td>
+				                        <td>$1251.00</td>
+				                        <td>$1251.00</td>
+				                      </tr>
+				                   </tbody>
+	                  			</table>
+	                        </div> <!-- End Card Body -->
+	                    </div> <!-- End Card -->
+	                </div>   <!-- End Column 12 -->
+	           	</div> <!--  End Row -->
+	           	
+	           	
+	    	</div><!-- .animated -->
+		</div><!-- .content -->
+	    
+	    <!-- Page Content End -->
+	    
+	</div> <!-- End right panel -->
+    
+ 
+   	
+      	 
+	<!-- Footer -->
+	<div>
+    <script src="/bank/js/vendor/jquery-2.1.4.min.js"></script>
+    <script src="/bank/js/vendor/jquery-1.12.4.js"></script>
+    <script src="/bank/js/vendor/jquery-ui.js"></script>
+    <script src="/bank/js/popper.min.js"></script>
+    <script src="/bank/js/plugins.js"></script>
+    <script src="/bank/js/main.js"></script>
+    <script src="/bank/js/dashboard.js"></script>
+    <script src="/bank/js/widgets.js"></script>
+    <script src="/bank/js/lib/chart-js/Chart.bundle.js"></script>
+    <script src="/bank/js/lib/vector-map/jquery.vmap.js"></script>
+    <script src="/bank/js/lib/vector-map/jquery.vmap.min.js"></script>
+    <script src="/bank/js/lib/vector-map/jquery.vmap.sampledata.js"></script>
+    <script src="/bank/js/lib/vector-map/country/jquery.vmap.world.js"></script>
+
+    <script>
+        ( function ( $ ) {
+            "use strict";
+
+            jQuery( '#vmap' ).vectorMap( {
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#ffffff',
+                hoverOpacity: 0.7,
+                selectedColor: '#1de9b6',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: [ '#1de9b6', '#03a9f5' ],
+                normalizeFunction: 'polynomial'
+            } );
+        } )( jQuery );
+    </script>
+
+</div>
+	
+	<script src="/bank/js/lib/data-table/datatables.min.js"></script>
+    <script src="/bank/js/lib/data-table/dataTables.bootstrap.min.js"></script>
+    <script src="/bank/js/lib/data-table/dataTables.buttons.min.js"></script>
+    <script src="/bank/js/lib/data-table/buttons.bootstrap.min.js"></script>
+    <script src="/bank/js/lib/data-table/jszip.min.js"></script>
+    <script src="/bank/js/lib/data-table/pdfmake.min.js"></script>
+    <script src="/bank/js/lib/data-table/vfs_fonts.js"></script>
+    <script src="/bank/js/lib/data-table/buttons.html5.min.js"></script>
+    <script src="/bank/js/lib/data-table/buttons.print.min.js"></script>
+    <script src="/bank/js/lib/data-table/buttons.colVis.min.js"></script>
+    <script src="/bank/js/lib/data-table/datatables-init.js"></script>
+    
+	<script type="text/javascript">
+          $('#transactionTable').DataTable({
+              'order': []
+          } );
+          
+       // variable to save current account name when selected
+  		var currentName;
+
+  		// Save current account name when seleted
+  	    $("div [contenteditable=true]").focus(function() {
+  	    	currentName = $(this).html();
+  	    });
+
+  		// When focus from name is blurred check to see if the account name changed
+  	    $("div [contenteditable=true]").blur(function() {
+  	        if ($(this).html() != currentName) {
+  	        	
+  	        	// save the element
+  	        	var element = $(this);
+  	        	
+  	        	// Thymeleaf to set base url
+  	        	var baseURL = "/bank/account/update?id=";
+  	        	
+  	        	// save the new name and id of the account
+  	        	var acctId = $(this).closest('form').find('input').val();
+  	        	var acctName = $(this).html();
+  	        	var valid = true;
+  	        	
+  	        	if (acctName.length <= 0){
+  	        		var error = '<div i
+d21
+d="errorUpdate" class="sufee-alert alert with-close alert-danger alert-dismissible fade show">';
+          	    	error += '<span class="badge badge-pill badge-danger">Error</span>';
+  	    			error += '<span> Account Name must not be empty.</span>';
+  	  				error += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+  	    			error += '<span aria-hidden="true">&times;</span>';
+  					error += '</button>';
+  					error += '</div>';
+  					
+  					element.text(currentName);
+          	    	$("#firstRow").before(error);
+          	    	
+          	    	valid = false;
+  	        		
+  	        	}
+  	        	
+  	        	if (acctName.length > 40){
+  	        		var error = '<div id="errorUpdate" class="sufee-alert alert with-close alert-danger alert-dismissible fade show">';
+          	    	error += '<span class="badge badge-pill badge-danger">Error</span>';
+  	    			error += '<span> Account Name must be less than 40 characters.</span>';
+  	  				error += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+  	    			error += '<span aria-hidden="true">&times;</span>';
+  					error += '</button>';
+  					error += '</div>';
+  					
+  					element.text(currentName);
+          	    	$("#firstRow").before(error);
+          	    	
+          	    	valid = false;
+  	        		
+  	        	}
+  	           	                   
+  	        	// make ajax call to update the new account name on server
+  	        	if (valid){
+  		        	$.ajax({
+  		        		type : "POST",
+  		        	    contentType : "application/json",
+  		        	    url : baseURL + acctId + "&newName=" + acctName,
+  		        	    cache : false,
+  		        	    timeout : 600000,
+  		        	    success : function(data) {
+  		        	   		
+  		        	   		var success = '<div id="successUpdate" class="sufee-alert alert with-close alert-success alert-dismissible fade show">';
+  							success += '<span class="badge badge-pill badge-success">Success</span>';
+  			    			success += '<span> Update of account name saved.</span>';
+  			  				success += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+  			    			success += '<span aria-hidden="true">&times;</span>';
+  							success += '</button>';
+  							success += '</div>';
+  							
+  							$("#firstRow").before(success);
+  						
+  		        	    },
+  		        	    error : function(e) {
+  		        	    
+  		        	      	var error = '<div id="errorUpdate" class="sufee-alert alert with-close alert-danger alert-dismissible fade show">';
+  		        	    	error += '<span class="badge badge-pill badge-danger">Error</span>';
+  			    			error += '<span> An unknown error occurred while executing an update to the account name.</span>';
+  			  				error += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+  			    			error += '<span aria-hidden="true">&times;</span>';
+  							error += '</button>';
+  							error += '</div>';	
+  		        	    
+  		        	    	element.text(currentName);
+  		        	    	$("#firstRow").before(error);
+  		        	    }
+  		        	}); // end ajax
+  	        	} // end if valid
+  	        }   // end if account name changed 
+  	    });	
+   	</script>
+	
+	
+	
+</body>
+</html>
+
+0
+
